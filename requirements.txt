@@ -1,4 +1,3 @@
 flask
 nltk
 scikit-learn
-pandas
