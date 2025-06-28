@@ -2,4 +2,3 @@ flask
 nltk
 scikit-learn
 pandas
-tqdm
