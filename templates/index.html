@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PhishDetect Web</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="/static/script.js" defer></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>PhishDetect Web</h1>
+      <p class="subtext">
+        Automatically detect phishing emails using NLP & Machine Learning
+      </p>
+    </header>
+
+    <main class="container">
+      <form method="POST">
+        <label for="email">Enter the email content:</label>
+        <textarea
+          id="email"
+          name="email"
+          placeholder="Example: You have won $1000, click here..."
+          required
+        >
+{{ email }}</textarea
+        >
+        <div class="button-group">
+          <button type="submit">🔍 Detect Now</button>
+          <button type="button" id="clear-btn">🧹 Clear Text</button>
+        </div>
+      </form>
+
+      {% if prediction %}
+      <div class="result-box">
+        <h3>Prediction Result:</h3>
+        <p class="{{ 'phishing' if 'Phishing' in prediction else 'safe' }}">
+          {{ prediction }}
+        </p>
+      </div>
+
+      {% if history %}
+      <div class="history-box">
+        <h3>Detection History</h3>
+        <ul>
+          {% for r in history %}
+          <li><strong>{{ r.time }}:</strong> {{ r.label }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <div class="evaluation-box">
+        <h4>Model Accuracy:</h4>
+        <p>{{ accuracy }} %</p>
+        <h4>Classification Report:</h4>
+        <pre>{{ report }}</pre>
+      </div>
+      {% endif %}
+    </main>
+
+    <footer>
+      &copy; 2025 <strong>PhishDetect Web</strong> • v1.0<br />
+      Developed by
+      <a
+        href="https://www.linkedin.com/in/akmal-taufiqurrahman-686961285/"
+        target="_blank"
+        >akmaaltaufiq</a
+      >
+      • Contact:
+      <a href="mailto:taufikakmal53@gmail.com">taufikakmal53@gmail.com</a>
+    </footer>
+  </body>
+</html>
