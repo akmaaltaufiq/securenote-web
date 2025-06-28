@@ -1,3 +1,4 @@
-flask
-nltk
+Flask
 scikit-learn
+nltk
+gunicorn
