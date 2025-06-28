@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: phishdetect-web
-    runtime: python
-    buildCommand: ""
-    startCommand: gunicorn app:app
